@@ -30,7 +30,13 @@ A Helm chart for Kubernetes
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| failureThreshold | int | `3` |  |
+| failureThreshold | int | `3` |  |
 | fullnameOverride | string | `""` |  |
+| httpGet.path | string | `"/api/liveness"` |  |
+| httpGet.path | string | `"/api/readiness"` |  |
+| httpGet.port | int | `8080` |  |
+| httpGet.port | int | `8080` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"springboot-probes"` |  |
 | image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
@@ -43,14 +49,17 @@ A Helm chart for Kubernetes
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
 | ingress.tls | list | `[]` |  |
-| livenessProbe.tcpSocket.port | string | `"http"` |  |
+| initialDelaySeconds | int | `15` |  |
+| initialDelaySeconds | int | `15` |  |
+| livenessProbe | string | `nil` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` | https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector |
+| periodSeconds | int | `5` |  |
+| periodSeconds | int | `5` |  |
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| readinessProbe.initialDelaySeconds | int | `20` |  |
-| readinessProbe.tcpSocket.port | string | `"http"` |  |
+| readinessProbe | string | `nil` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | securityContext | object | `{}` |  |
